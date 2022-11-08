@@ -20,8 +20,8 @@ const exerciseModel = {
       "SELECT COUNT(*) as cct FROM exercise WHERE userId = ? " +
       fromSql +
       toSql;
+     
     let exerciseCount = 0;
-
     exercisesDB.get(sqlCount, params, (_, count) => {
       exerciseCount = count.cct;
     });

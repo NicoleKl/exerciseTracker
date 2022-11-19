@@ -1,6 +1,6 @@
 var sqlite3 = require("sqlite3").verbose();
 
-const DBSOURCE = "src/databases/users/users-db.sqlite";
+const DBSOURCE = "tests/dbMocks/testUser-db.sqlite";
 
 let usersDB = new sqlite3.Database(DBSOURCE, (err) => {
   if (err) {
@@ -11,7 +11,7 @@ let usersDB = new sqlite3.Database(DBSOURCE, (err) => {
       `CREATE TABLE IF NOT EXISTS user (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name text UNIQUE
-        )`,
+        )`
     );
   }
 });

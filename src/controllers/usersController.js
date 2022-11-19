@@ -5,9 +5,15 @@ const response = require("./utils");
 const usersController = {
   getAllUsers: (_, res) => {
     userModel.getAllUsers((err, rows) => {
-      return err
-        ? response.errorResponse(res, 400, err.message)
-        : response.successResponse(res, rows);
+      if (err) {
+        return response.errorResponse(res, 400, err.message);
+      } else {
+        if(rows.length === 0) {
+          return response.errorResponse(res, 400, "users not found");
+        } else {
+          return response.successResponse(res, rows);
+        }
+      }
     });
   },
   addUser: (req, res) => {

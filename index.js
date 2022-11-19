@@ -21,6 +21,4 @@ app.get("/", (_, res) => {
 app.use("/api/users", usersRouter);
 app.use("/api/users", exercisesRouter);
 
-const listener = app.listen(process.env.PORT || 3000, () => {
-  console.log('Your app is listening on port ' + listener.address().port)
-})
+module.exports = app;

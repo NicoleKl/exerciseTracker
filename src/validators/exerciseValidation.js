@@ -29,7 +29,7 @@ const exerciseValidation = {
     if (!inputValidation.userIdIsValid(data.userId)) return "invalid user id";
     if (data.from && !dateIsValid(data.from)) return "invalid 'from' date";
     if (data.to && !dateIsValid(data.to)) return "invalid 'to' date";
-    if (!inputValidation.limitIsValid(data.limit))
+    if (data.limit && !inputValidation.limitIsValid(data.limit))
       return "invalid limit";
 
     return "success";

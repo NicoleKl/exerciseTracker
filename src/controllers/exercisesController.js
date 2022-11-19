@@ -7,7 +7,7 @@ const response = require("./utils");
 const exercisesController = {
   addExercise: (req, res) => {
     const userId = Number(req.params._id),
-      description = req.body.description,
+      description = req.body.description || "",
       duration = Number(req.body.duration),
       date = req.body.date || new Date().toISOString().split("T")[0];
 

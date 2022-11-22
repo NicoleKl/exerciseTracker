@@ -8,7 +8,7 @@ const usersController = {
       if (err) {
         return response.errorResponse(res, 400, err.message);
       } else {
-        if(rows.length === 0) {
+        if (rows.length === 0) {
           return response.errorResponse(res, 400, "users not found");
         } else {
           return response.successResponse(res, rows);
@@ -38,7 +38,7 @@ const usersController = {
         });
       }
     });
-  }
+  },
 };
 
 module.exports = usersController;

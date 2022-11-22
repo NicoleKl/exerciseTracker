@@ -16,8 +16,6 @@ const exercisesController = {
 
     if (exerciseValidationResult !== "success") {
       return response.errorResponse(res, 400, exerciseValidationResult);
-    } else {
-      
     }
 
     userModel.findUserById(userId, (rows) => {
@@ -32,12 +30,12 @@ const exercisesController = {
           return err
             ? response.errorResponse(res, 400, err.message)
             : response.successResponse(res, {
-              userId,
-              exerciseId: exId,
-              description,
-              duration,
-              date,
-            });
+                userId,
+                exerciseId: exId,
+                description,
+                duration,
+                date,
+              });
         });
       }
     });
@@ -61,7 +59,7 @@ const exercisesController = {
           res,
           404,
           `there is no user with ID ${reqData.userId}`
-        )
+        );
       } else {
         exerciseModel.getExercises(reqData, (err, [rows, count]) => {
           if (err) {
@@ -77,8 +75,6 @@ const exercisesController = {
         });
       }
     });
-
-    
   },
 };
 

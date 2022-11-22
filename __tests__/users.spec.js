@@ -1,9 +1,9 @@
 const request = require("supertest");
 const app = require("../index");
-const usersTestDB = require("./dbMocks/testUser-db");
+const DB = require("../src/database/db");
 
 afterAll(() => {
-  usersTestDB.run("DROP TABLE IF EXISTS user");
+  DB.run("DROP TABLE IF EXISTS user");
 });
 
 describe("GET /api/users ", () => {
@@ -27,7 +27,7 @@ describe("GET /api/users ", () => {
   });
 });
 
-describe("POST /api/users ",() => {
+describe("POST /api/users ", () => {
   test("it should respond with status 200 after adding new user", async (done) => {
     const res = await request(app).post("/api/users").send({
       username: "user3",
@@ -73,4 +73,4 @@ describe("POST /api/users ",() => {
     expect(res.body.length).toBe(5);
     done();
   });
-})
+});

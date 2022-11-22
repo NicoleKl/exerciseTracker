@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const usersController = require("../controllers/usersController")
+const usersController = require("../controllers/usersController");
 
 app.get("/", usersController.getAllUsers);
 

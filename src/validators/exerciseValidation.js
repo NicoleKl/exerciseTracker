@@ -33,7 +33,7 @@ const exerciseValidation = {
       return "invalid limit";
 
     return "success";
-  }
+  },
 };
 
 module.exports = exerciseValidation;

@@ -52,7 +52,7 @@ describe("POST /api/users ", () => {
     done();
   });
 
-  test("it should respond with status 403 when username is not unique", async (done) => {
+  test("it should respond with status 403 when username already exists", async (done) => {
     const res = await request(app).post("/api/users").send({
       username: "user5",
     });

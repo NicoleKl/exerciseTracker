@@ -28,7 +28,7 @@ describe("POST /api/users/:_id/exercises", () => {
   });
 
   test("it should use current date if date is not specified", async (done) => {
-    await request(app).post("/api/users ").send({
+    await request(app).post("/api/users").send({
       username: "user1",
     });
     const res = await request(app).post("/api/users/1/exercises").send({
@@ -171,6 +171,18 @@ describe("GET /api/users/:_id/logs?[from][&to][&limit]", () => {
       "/api/users/2/logs?to=2022-12-10&limit=2"
     );
     expect(res.body.logs.length).toBe(2);
+    done();
+  });
+
+  test("it should return status code 404 when there are no exercises for user", async (done) => {
+    await request(app).post("/api/users").send({
+      username: "user3",
+    });
+
+    const res = await request(app).get(
+      "/api/users/3/logs"
+    );
+    expect(res.status).toBe(404);
     done();
   });
 });

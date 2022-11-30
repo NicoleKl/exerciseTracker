@@ -30,9 +30,9 @@ const exerciseModel = {
     });
 
     sql += "ORDER BY date ASC ";
-    if (data.limit) {
+    if (Number(data.limit)) {
       sql += `LIMIT ? `;
-      params.push(data.limit);
+      params.push(Number(data.limit));
     }
     const sqlEx = "SELECT * FROM exercise " + sql;
 

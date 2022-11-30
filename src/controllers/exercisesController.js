@@ -45,7 +45,7 @@ const exercisesController = {
       userId: Number(req.params._id),
       from: req.query.from,
       to: req.query.to,
-      limit: Number(req.query.limit),
+      limit: req.query.limit,
     };
 
     const inputValidationResult = exerciseValidation.gettingExercises(reqData);

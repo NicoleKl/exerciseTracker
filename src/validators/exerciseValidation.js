@@ -11,7 +11,7 @@ const inputValidation = {
     return !(Number.isNaN(duration) || duration <= 0);
   },
   limitIsValid: (limit) => {
-    return !(Number.isNaN(limit) || limit <= 0);
+    return !(isNaN(limit) || limit <= 0);
   },
 };
 

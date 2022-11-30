@@ -166,6 +166,22 @@ describe("GET /api/users/:_id/logs?[from][&to][&limit]", () => {
     done();
   });
 
+  test("it should return error 'invalid limit' when limit value is wrong", async (done) => {
+    const res = await request(app).get(
+      "/api/users/2/logs?from=2022-12-01&limit=AB"
+    );
+    expect(res.body.error).toBe("invalid limit");
+    done();
+  });
+
+    test("it should return error 'invalid from date' when from date value is wrong", async (done) => {
+      const res = await request(app).get(
+        "/api/users/2/logs?from=WV"
+      );
+      expect(res.body.error).toBe("invalid 'from' date");
+      done();
+    });
+
   test("it should return number of exercises(logs length) - 2 when limit 2 with to date", async (done) => {
     const res = await request(app).get(
       "/api/users/2/logs?to=2022-12-10&limit=2"
